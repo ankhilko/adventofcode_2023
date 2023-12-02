@@ -1,4 +1,4 @@
-def adventofcode_2():
+def adventofcode_1():
     with open('task1input.txt') as file:
         new_data = file.read()
     data = new_data.split()
