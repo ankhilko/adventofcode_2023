@@ -9,6 +9,7 @@ def turn_to_dict(data: list, seed_no=None):
     SEED_MAP_CASH = {}
 
     seed_map = {data[0]: {}}
+
     print('proceeding', data[0])
     print('input_seeds:', seed_no)
 
@@ -50,9 +51,8 @@ def turn_to_dict(data: list, seed_no=None):
 def extract_seed(data):
     to_int = data.strip().split(':')[1].strip().split(' ')
     as_list_of_tuples = []
-    for k in range(len(to_int), 2):
+    for k in range(0, len(to_int), 2):
         as_list_of_tuples.append((int(to_int[k]), int(to_int[k + 1])))
-
     return as_list_of_tuples
 
 
@@ -69,7 +69,7 @@ def adventofcode_5_1():
     seed_no = extract_seed(data_start[0])
     seed_no.sort()
 
-    seed_no_to_work = extract_seed(data_start[0])
+    seed_no_to_work = []
 
     for k in range(0, len(seed_no), 2):
         seed_no_to_work += (seed_no[k], seed_no[k + 1])
@@ -79,7 +79,7 @@ def adventofcode_5_1():
             new_line = line_1.strip('\n').split('\n')
             seed_no_to_work = turn_to_dict(new_line, seed_no=seed_no_to_work)
 
-    return min(seed_no_to_work)
+    return seed_no_to_work
 
 
 if __name__ == '__main__':
